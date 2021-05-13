@@ -6,6 +6,11 @@ output: html_document
 ---
 
 
+## Data Tidying Project 
+#### We will clean and combine two untidy datasets about retail sales and department stores sales in the US between 1992 and 2014.
+#### In order to do this, we will installing packages needed to manipulate the data, getting the data, saving the raw data, exploring the data, wrangling the data, merging the two data, and finally plotting the new data created. 
+
+
 ```{r setup, include=FALSE}
 ## install packages if necessary
 list.of.packages <- c("httr", "readxl", "dplyr", "tidyr", "stringr", "reshape2", "skimr", "ggplot2")
@@ -23,7 +28,11 @@ library(skimr)
 library(ggplot2)
 ```
 
+
+
 ### Get Data
+#### Here we are retrieving two datasets from the US Census about sales by department stores from 1992 to 2016 (df1) and US retail sales by store type with growth rate from 2009 to 2014 (df2).
+
 
 [Data Set 1](https://data.world/retail/department-store-sales): Sales from the Retail Trade and Food Services Report from the US Census. This dataset only covers Department Stores, though the report covers a wide range of retail types. [1992-2016]
 
@@ -44,7 +53,10 @@ df2 <- read_excel(tf)
 colnames(df2) <- df2[1,]
 ```
 
+
 ### Save Raw Data
+#### We save a copy of the data in order to be able to access them whenever we need to - even if one day they might be taken down from the internet. They can be found in the data/raw_data folder saved as .rds format.
+
 
 ```{r save-data, warning=FALSE} 
 ## use saveRDS() to save each object as a .rds file 
@@ -52,7 +64,12 @@ saveRDS(df1, file = "df_department.rds")
 saveRDS(df2, file = "df_retail.rds")
 ```
 
+
+
 ### Wrangle Data
+#### The datasets being currently both in a wide data format will be wrangled into a more usable, long, data format that can be merged into a single data frame. The final data frame will have three columns: business, year, n.
+#### Let's save first the retail information df2 file as df_retail and wrangle it in a serie of manipulation using the pipe operator.
+
 
 ```{r wrangle-df2, warning=FALSE} 
 ## an example working with df2
@@ -73,6 +90,11 @@ df_retail <- df2 %>%
   ## filter to only include the businesses we're interested in
   filter(business == "Retail sales, total "| business=="Department stores ")
 ```
+
+
+
+#### Next df1 dataset is saved as df_department and transform as well from a wide data set to long one. 
+
 
 ```{r wrangle-df1, warning=FALSE} 
 ## now, your turn!
@@ -97,10 +119,25 @@ df_department <- df1 %>%
   select(business, year, n)
 ```
 
+
+
+#### As we've written a lot of code we will add this to Github using git add ., git commit and git push to add (all) the file changes to our GitHub repository
+
+
+### Merging the data
+#### Now that we wrangle df1 and df2 and saved these as df_retail and df_department we can merge them into a single data frame. For this we can bind their rows and create a new object df_total.
+
+
 ```{r merge-data, warning=FALSE} 
 ## Now, combine the two data frames
-df_total <- function_name()
+df_total <- merge(x = df_department, y = df_retail, all = TRUE)
 ```
+
+
+
+### Plotting the data
+#### Now we can plot the data from the three data frames we created (df_retail, df_department and df_total) using the R package ggplot2.
+
 
 ```{r plot, warning=FALSE, fig.width=10} 
 ## Plot Retail Sales data
@@ -117,47 +154,24 @@ ggplot(df_total, aes(x=year,y=as.numeric(n), colour=business)) +
 ```
 
 
-```{r}
-glimpse(df1)
-```
-```{r}
-glimpse(df2)
-```
 
-```{r}
-class(df2)
+### Add Markdown text to .Rmd
 
-```
-```{r}
-colnames(df_department)
-```
-```{r}
-skim(df_department)
-```
 
-```{r}
-head(df_department, 15)
-```
 
-```{r}
-glimpse(df_department)
-```
-```{r}
-View(df_department)
-```
-```{r}
-skim(df_retail)
-```
-```{r}
-glimpse(df_retail)
-```
-```{r}
-View(df_retail)
-```
-```
-```{r}
-colnames(df_department)
-```
+### Knit the RMarkdown document
+#### Then we knit this R Markdown document into an HTML document.
+
+
+
+### Final push to GitHub
+#### Now that we finalized our project, we'll do one final push to GitHub. Add, commit and push the work to GitHub.
+#### Then we navigate to our GitHub repository and look at the changes in the project.
+
+
+
+
+
 
 
 
