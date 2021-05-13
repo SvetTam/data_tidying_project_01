@@ -380,11 +380,11 @@ summary {
 
 <div id="data-tidying-project" class="section level2">
 <h2>Data Tidying Project</h2>
-<div id="clean-and-combine-two-datasets-data-frame-retail-sales-and-department-stores-sales-in-the-us-1992-2014" class="section level4">
-<h4>Clean and combine two datasets: data frame retail sales and department stores sales in the US 1992-2014</h4>
+<div id="we-will-clean-and-combine-two-untidy-datasets-about-retail-sales-and-department-stores-sales-in-the-us-between-1992-and-2014." class="section level4">
+<h4>We will clean and combine two untidy datasets about retail sales and department stores sales in the US between 1992 and 2014.</h4>
 </div>
-<div id="installing-packages-getting-the-data-saving-the-raw-data-exploring-the-data-wrangling-the-data-merging-the-two-data-plotting-the-new-data" class="section level4">
-<h4>Installing packages, getting the data, saving the raw data, exploring the data, wrangling the data, merging the two data, plotting the new data</h4>
+<div id="in-order-to-do-this-we-will-installing-packages-needed-to-manipulate-the-data-getting-the-data-saving-the-raw-data-exploring-the-data-wrangling-the-data-merging-the-two-data-and-finally-plotting-the-new-data-created." class="section level4">
+<h4>In order to do this, we will installing packages needed to manipulate the data, getting the data, saving the raw data, exploring the data, wrangling the data, merging the two data, and finally plotting the new data created.</h4>
 </div>
 <div id="get-data" class="section level3">
 <h3>Get Data</h3>
@@ -397,22 +397,22 @@ summary {
 
 GET(&quot;https://query.data.world/s/gdk7iwtlisq6vkktmybqqr7hjjty5s&quot;, write_disk(tf &lt;- tempfile(fileext = &quot;.xls&quot;)))</code></pre>
 <pre><code>## Response [https://download.data.world/file_download/retail/department-store-sales/retail-trade-report-department-stores.xls?auth=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm9kLXVzZXItY2xpZW50OnNoYW5lbGxpcyIsImlzcyI6ImFnZW50OnNoYW5lbGxpczo6OTA5ZDZlNTQtMmQwZC00MDczLWE4Y2UtYWExNzI3OGJkN2ViIiwiaWF0IjoxNTIzOTkwNDIzLCJyb2xlIjpbInVzZXIiLCJ1c2VyX2FwaV9hZG1pbiIsInVzZXJfYXBpX3JlYWQiLCJ1c2VyX2FwaV93cml0ZSJdLCJnZW5lcmFsLXB1cnBvc2UiOmZhbHNlLCJ1cmwiOiI0YWU5NmEzZjc4Y2EyOGE5MWM1ZDZlMTgxYzg5YjI0NjIzZDY0ZThlIn0.jBFlyy1aloE-EpeYyosD3iRaDPoY75DBqdh7suLoZxKcrsG8N5GtOiFb6sNMjTqqclsHX7P8RUw7T5sAArPbcw]
-##   Date: 2021-05-13 08:01
+##   Date: 2021-05-13 08:33
 ##   Status: 200
 ##   Content-Type: application/vnd.ms-excel
 ##   Size: 62.5 kB
-## &lt;ON DISK&gt;  /var/folders/xn/2tgbbyhn02q_9cj5b7j2f5rw0000gn/T//RtmpWvszON/file5496db804ba.xls</code></pre>
+## &lt;ON DISK&gt;  /var/folders/xn/2tgbbyhn02q_9cj5b7j2f5rw0000gn/T//RtmphAW7N8/file557a56ea83a9.xls</code></pre>
 <pre class="r"><code>df1 &lt;- read_excel(tf)
 
 #2009-2014
 # https://data.world/garyhoov/retail-sales-growth
 GET(&quot;https://query.data.world/s/py7kinxvyuxjpzwdjs2ti4wdmui6bi&quot;, write_disk(tf &lt;- tempfile(fileext = &quot;.xls&quot;)))</code></pre>
 <pre><code>## Response [https://download.data.world/file_download/garyhoov/retail-sales-growth/US%20Retail%20Sales%20by%20Store%20Type%202009-2014.xls?auth=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm9kLXVzZXItY2xpZW50OnNoYW5lbGxpcyIsImlzcyI6ImFnZW50OnNoYW5lbGxpczo6OTA5ZDZlNTQtMmQwZC00MDczLWE4Y2UtYWExNzI3OGJkN2ViIiwiaWF0IjoxNTIzOTkwNTAwLCJyb2xlIjpbInVzZXIiLCJ1c2VyX2FwaV9hZG1pbiIsInVzZXJfYXBpX3JlYWQiLCJ1c2VyX2FwaV93cml0ZSJdLCJnZW5lcmFsLXB1cnBvc2UiOmZhbHNlLCJ1cmwiOiI5OWRhMDIwMzRlY2Q1YmZmZTRmODFjYzJlMTg4ZmUxOGQyZmEyNDdlIn0.NLTr571lKSZMKhmvIFFQGuoVeFVFr9DrQ7nxBO3LOcLTJUrKivBxWpUrcJcY8dxnkL4FlGba3wsL65c3wLzzxA]
-##   Date: 2021-05-13 08:01
+##   Date: 2021-05-13 08:33
 ##   Status: 200
 ##   Content-Type: application/vnd.ms-excel
 ##   Size: 169 kB
-## &lt;ON DISK&gt;  /var/folders/xn/2tgbbyhn02q_9cj5b7j2f5rw0000gn/T//RtmpWvszON/file54962c3e565f.xls</code></pre>
+## &lt;ON DISK&gt;  /var/folders/xn/2tgbbyhn02q_9cj5b7j2f5rw0000gn/T//RtmphAW7N8/file557a3e69f8d3.xls</code></pre>
 <pre class="r"><code>df2 &lt;- read_excel(tf)</code></pre>
 <pre><code>## New names:
 ## * `` -&gt; ...2
