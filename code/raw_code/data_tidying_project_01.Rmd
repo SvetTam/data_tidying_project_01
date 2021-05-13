@@ -66,6 +66,29 @@ saveRDS(df2, file = "df_retail.rds")
 
 
 
+### Exploring the data
+#### We then first explore both datasets.
+
+
+```{r}
+dim(df2)
+dim(df1)
+class(df2)
+class(df1)
+glimpse(df2)
+glimpse(df1)
+skim(df2)
+skim(df1)
+colnames(df2)
+colnames(df1)
+View(df2)
+View(df1)
+head(df2, 15)
+head(df1, 15)
+```
+
+
+
 ### Wrangle Data
 #### The datasets being currently both in a wide data format will be wrangled into a more usable, long, data format that can be merged into a single data frame. The final data frame will have three columns: business, year, n.
 #### Let's save first the retail information df2 file as df_retail and wrangle it in a serie of manipulation using the pipe operator.
@@ -117,6 +140,32 @@ df_department <- df1 %>%
   mutate(business = "Department stores") %>%
   ## reorder column names to be : business, year, n
   select(business, year, n)
+```
+
+
+
+### Check the reformated data
+#### Now the two data sets are both in a long format, have commun columns and have been saved as df_department (df1) and df_retail ### (df2). We can check this by exploring again these transformed data sets.
+
+```{r}
+dim(df_retail)
+class(df_retail)
+glimpse(df_retail)
+skim(df_retail)
+colnames(df_retail)
+View(df_retail)
+head(df_retail, 15)
+```
+
+
+```{r}
+dim(df_department)
+class(df_department)
+glimpse(df_department)
+skim(df_department)
+colnames(df_department)
+View(df_department)
+head(df_department, 15)
 ```
 
 
