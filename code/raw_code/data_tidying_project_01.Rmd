@@ -135,7 +135,7 @@ df_total <- merge(x = df_department, y = df_retail, all = TRUE)
 
 
 
-### Plotting the data
+### Plotting the createsd data
 #### Now we can plot the data from the three data frames we created (df_retail, df_department and df_total) using the R package ggplot2.
 
 
